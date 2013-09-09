@@ -14,7 +14,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta http-equiv="X-UA-Compatible" content="IE=9" />
 
-  <link rel="stylesheet" type="text/css" media="all" href="css/iip.compressed.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="css/iip.css" />
 <!--[if lt IE 10]>
   <link rel="stylesheet" type="text/css" media="all" href="css/ie.compressed.css" />
 <![endif]-->
@@ -35,7 +35,7 @@
       left: 0;
       margin: 0;
       padding: 0;
-    }	
+    }
   </style>
 
   <link rel="shortcut icon" href="images/iip-favicon.png" />
@@ -43,40 +43,49 @@
 
   <title>IIPMooViewer 2.0 :: HTML5 High Resolution Image Viewer</title>
 
-  <script src="//ajax.googleapis.com/ajax/libs/mootools/1.4.5/mootools-yui-compressed.js"></script>
-  <script type="text/javascript" src="javascript/iipmooviewer-2.0-compressed.js"></script>
+  <link rel="stylesheet" type="text/css" media="all" href="css/iipdim.css" />
 
 <!--[if lt IE 7]>
   <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE7.js">IE7_PNG_SUFFIX = ".png";</script>
 <![endif]-->
 
-  <script type="text/javascript">
+ </head>
+
+ <body>
+   <div id="viewer"></div>
+   <script src="//ajax.googleapis.com/ajax/libs/mootools/1.4.5/mootools-yui-compressed.js"></script>
+   <script type="text/javascript">window.MooTools || document.write('<script src="javascript/mootools-core-1.4.5-full-nocompat-yc.js" type="text/javascript"><\/script><script src="javascript/mootools-more-1.4.0.1-compressed.js" type="text/javascript"><\/script>')</script>
+   <script type="text/javascript" src="javascript/iipmooviewer-2.0-compressed.js"></script>
+   <script type="text/javascript" src="javascript/raphael-min.js"></script>
+   <script type="text/javascript" src="src/quote.js"></script>
+   <script type="text/javascript" src="src/dimension.js"></script>
+   <script type="text/javascript" src="src/iipmooviewerdim.js"></script>
+   <script type="text/javascript" src="src/lang/helpdim.en.js"></script>
+
+   <script type="text/javascript">
 
     // IIPMooViewer options: See documentation at http://iipimage.sourceforge.net for more details
     // Server path: set if not using default path
-    var server = '/fcgi-bin/iipsrv.fcgi';
+    var server = '/fastcgi/iipsrv.fcgi';
 
     // The *full* image path on the server. This path does *not* need to be in the web
     // server root directory. On Windows, use Unix style forward slash paths without
     // the "c:" prefix
-    var image = '/path/to/image.tif';
+    var image = '/image.tif';
 
     // Copyright or information message
     var credit = '&copy; copyright or information message';
 
     // Create our iipmooviewer object
-    new IIPMooViewer( "viewer", {
-	server: server,
-	image: image,
-	credit: credit
+    new IIPMooViewerDim( "viewer", {
+      server: server,
+      image: image,
+      credit: credit,
+      measureExpanded: false,
+      scale: 13.4,
     });
 
   </script>
-
- </head>
-
- <body>
-   <div id="viewer"></div>
  </body>
 
 </html>
